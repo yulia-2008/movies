@@ -9,6 +9,14 @@ body {
   text-align: center;
 }
 
+input {
+  width: 200px;
+  height: 30px;
+  border: 1px solid rgb(168, 168, 168);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 #center {
   text-align: center;
 }
@@ -29,4 +37,8 @@ background: white;
 margin-right: 10%;
 padding: 3%;
 background: white;
+}
+
+#red {
+  color:red;
 }
