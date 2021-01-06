@@ -51,14 +51,15 @@ class App extends Component {
     else {
       this.setState({nominates: [...this.state.nominates, newNominant]
       })
+      event.target.disabled=true
     }
   }
 
   removeNominant = event => {
     let filteredNominates =  this.state.nominates.filter(movie => movie.imdbID !== event.target.parentNode.accessKey)
-    this.setState({nominates: filteredNominates})
-    
-
+    this.setState({nominates: filteredNominates,
+                   message: ""
+    })
   }
 
   renderNominates = () => {
