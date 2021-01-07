@@ -1,14 +1,11 @@
-body {
-  /* background: rgb(236, 235, 235); */
-}
 
 #main {
-   width: 70%;
+  width: 70%;
   padding-bottom: 3%;  
   margin: auto;
   margin-top: 3%;
-  background:rgb(236, 235, 235);
-  border: 2px solid rgb(168, 168, 168);
+  background:rgb(241, 233, 233); 
+  border: 2px solid rgb(173, 167, 167);
   border-radius: 5px; 
 }
 
@@ -18,7 +15,6 @@ body {
   margin: auto; 
   text-align: center;
 }
-
 
 img{
   width: 20%;
@@ -43,7 +39,6 @@ h4{
 
 #flex {
   display: flex; 
-  /* align-items: center; */
   justify-content: space-between;
 }
 
@@ -59,20 +54,15 @@ h4{
 padding: 3%;
 width: 50%;
 float:left;
-/* background: white;
-border: 2px solid rgb(168, 168, 168);
-border-radius: 5px; */
 }
 
 #right-container {
 padding: 3%;
 width:50%;
 float: right;
-/* background: white;
-border: 2px solid rgb(168, 168, 168);
-border-radius: 5px; */
 }
 
 #red {
   color:red;
+  font-weight: bold;
 }

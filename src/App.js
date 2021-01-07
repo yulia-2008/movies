@@ -36,29 +36,29 @@ class App extends Component {
               <br/>
               <p>{movie.Title}</p>
               <p>({movie.Year})</p> 
-              <button id={movie.imdbID} onClick={event => this.addNomination(event)} >Nominate</button>
+                  {this.alreadyNominated(movie.imdbID) ?     
+                      <button id={movie.imdbID} onClick={event => this.addNomination(event)} disabled >Nominate</button>
+                      :                     
+                      <button id={movie.imdbID} onClick={event => this.addNomination(event)}>Nominate</button>
+                  }
             </div>
-            {this.buttonStatus(movie.imdbID)}
         </div> 
     ) 
   }
 
-  buttonStatus = id =>{
-        // suppose to render movie with disabled button if the movie is already added to nominations
-    let div = document.querySelector("#left-container")   
-    let button = div.querySelector(`#${id}`)  
-    console.log("l",button)
-    for (let i=0; i < this.state.nominations.length; i++){
-          if(this.state.nominations[i].imdbID == id){
-            
-            button.disabled=true
-          }
-     }   
+  alreadyNominated = id =>{
+          // chick if the movie is already nominated (for rendering active or disabled "Nominate" button)
+    let nominatedMovie = this.state.nominations.filter(movie => movie.imdbID === id)
+      if (nominatedMovie.length > 0 ) { 
+        return true
+      } 
+      else{
+        return false
+      }    
   }
 
 
-  addNomination = event => { 
-   
+  addNomination = event => {   
           // find movie by accessKey of the <li> element and add it to state.nominations
     let newNomination = this.state.moviesArray.find(movie => movie.imdbID === event.target.id)
     if (this.state.nominations.length > 4 ){
@@ -68,8 +68,8 @@ class App extends Component {
       this.setState({nominations: [...this.state.nominations, newNomination]
       })
 
-          // disable "Nominate" button
-      event.target.disabled=true
+      // option for disable "Nominate" button
+      // event.target.disabled=true
     }
   }
 
