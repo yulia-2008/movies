@@ -36,11 +36,26 @@ class App extends Component {
               <br/>
               <p>{movie.Title}</p>
               <p>({movie.Year})</p> 
-              <button id={movie.imdbID} onClick={event => this.addNomination(event)}>Nominate</button>
+              <button id={movie.imdbID} onClick={event => this.addNomination(event)} >Nominate</button>
             </div>
+            {this.buttonStatus(movie.imdbID)}
         </div> 
     ) 
   }
+
+  buttonStatus = id =>{
+        // suppose to render movie with disabled button if the movie is already added to nominations
+    let div = document.querySelector("#left-container")   
+    let button = div.querySelector(`#${id}`)  
+    console.log("l",button)
+    for (let i=0; i < this.state.nominations.length; i++){
+          if(this.state.nominations[i].imdbID == id){
+            
+            button.disabled=true
+          }
+     }   
+  }
+
 
   addNomination = event => { 
    
