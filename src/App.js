@@ -125,9 +125,8 @@ class App extends Component {
               <p id="red">{this.state.message}</p>
           </div>
 
-
         </div>
-
+        
       </div>
     );
   }
