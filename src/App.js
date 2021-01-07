@@ -8,7 +8,7 @@ class App extends Component {
   state = {
     moviesArray: [],
     searchTerm: null,
-    nominates: [],
+    nominations: [],
     message: ""
   }
 
@@ -30,55 +30,66 @@ class App extends Component {
 
   renderMovies = () => {
     return this.state.moviesArray.map(movie => 
-      <> 
-        <li accessKey={movie.imdbID}> 
-            {movie.Title} 
-            ({movie.Year}) &nbsp; 
-            <button onClick={event => this.addNominant(event)}>Nominate</button>
-        </li> 
-        <br/>
-      </>
+        <div id="movie-card"> 
+            <img src={movie.Poster} alt="poster"></img> <br/>
+            <div>
+              <br/>
+              <p>{movie.Title}</p>
+              <p>({movie.Year})</p> 
+              <button id={movie.imdbID} onClick={event => this.addNomination(event)}>Nominate</button>
+            </div>
+        </div> 
     ) 
   }
 
-  addNominant = event => { 
-    // find movie by accessKey of the <li> element and add it to state.nominates
-    let newNominant = this.state.moviesArray.find(movie => movie.imdbID === event.target.parentNode.accessKey)
-    if (this.state.nominates.length > 4 ){
+  addNomination = event => { 
+   
+          // find movie by accessKey of the <li> element and add it to state.nominations
+    let newNomination = this.state.moviesArray.find(movie => movie.imdbID === event.target.id)
+    if (this.state.nominations.length > 4 ){
       this.setState({message: "Only 5 nominanations are allowed."})
     }
-
     else {
-      this.setState({nominates: [...this.state.nominates, newNominant]
+      this.setState({nominations: [...this.state.nominations, newNomination]
       })
+
+          // disable "Nominate" button
       event.target.disabled=true
     }
   }
 
-  removeNominant = event => {
-    let filteredNominates =  this.state.nominates.filter(movie => movie.imdbID !== event.target.parentNode.accessKey)
-    this.setState({nominates: filteredNominates,
+  removeNomination = event => {
+    let filteredNominations =  this.state.nominations.filter(movie => movie.imdbID !== event.target.id)
+    this.setState({nominations: filteredNominations,
                    message: ""
     })
-  }
 
-  renderNominates = () => {
-    return this.state.nominates.map(movie => 
-      <> 
-        <li accessKey={movie.imdbID}> 
-            {movie.Title} 
-            ({movie.Year}) &nbsp; 
-            <button onClick={event => this.removeNominant(event)}>Remove</button>
-        </li> 
-        <br/>
-      </>
+        // turned "Nominate" buttom back to active (in the left container)
+    let div = document.querySelector("#left-container")   
+    let button = div.querySelector(`#${event.target.id}`) 
+    if (button){
+       button.disabled=false
+    }
+}
+
+  renderNominations = () => {
+    return this.state.nominations.map(movie => 
+        <div id="movie-card"> 
+          <img src={movie.Poster} alt="poster"></img>
+          <div>
+            <br/>
+            <p>{movie.Title}</p> 
+            <p>({movie.Year})</p>
+            <button  id={movie.imdbID} onClick={event => this.removeNomination(event)}>Remove</button>
+          </div> 
+        </div>
     ) 
   }
 
 
-  render() { console.log("state", this.state.nominates)
+  render() { console.log("state", this.state.nominations)
     return (
-      <>
+      <div id="main">
         <div id="centered">
           <form>
            <input type="search" placeholder=" Movie Search" onChange={this.changeHandler}></input>
@@ -87,22 +98,22 @@ class App extends Component {
 
         <div id="flex">
           <div id="left-container">
-              <h4 id="center">Results for "{this.state.searchTerm}" </h4>
+              <h4>Results for "{this.state.searchTerm}" </h4>
               <br/>
-              <ul>{this.renderMovies()}</ul>               
+              {this.renderMovies()}               
           </div>
 
           <div id="right-container">
               <h4> Nominations</h4>
               <br/>
-              <ul>{this.renderNominates()}</ul> 
+              {this.renderNominations()}
               <p id="red">{this.state.message}</p>
           </div>
 
 
         </div>
 
-      </>
+      </div>
     );
   }
 }

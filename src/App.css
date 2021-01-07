@@ -1,23 +1,44 @@
 body {
-  background: rgb(236, 235, 235);
+  /* background: rgb(236, 235, 235); */
+}
+
+#main {
+   width: 70%;
+  padding-bottom: 3%;  
+  margin: auto;
+  margin-top: 3%;
+  background:rgb(236, 235, 235);
+  border: 2px solid rgb(168, 168, 168);
+  border-radius: 5px; 
 }
 
 #centered {
-  padding: 5%;
+  padding-top: 5%;
   width: 70%;
   margin: auto; 
   text-align: center;
 }
 
+
+img{
+  width: 20%;
+  height: 10%;
+  margin: 4%;
+}
+
 input {
   width: 200px;
   height: 30px;
-  border: 1px solid rgb(168, 168, 168);
-  border-radius: 6px;
+  border: 2px solid rgb(168, 168, 168);
+  border-radius: 5px;
 }
 
-#center {
-  text-align: center;
+p{
+  margin: 0;
+}
+
+h4{
+  margin:0;
 }
 
 #flex {
@@ -26,16 +47,30 @@ input {
   justify-content: space-between;
 }
 
+#movie-card{
+  margin-bottom: 3%;
+  display: flex; 
+  border: 2px solid rgb(168, 168, 168);
+  border-radius: 5px;
+  background: white;
+}
+
 #left-container {
-margin-left: 10%;
 padding: 3%;
-background: white;
+width: 50%;
+float:left;
+/* background: white;
+border: 2px solid rgb(168, 168, 168);
+border-radius: 5px; */
 }
 
 #right-container {
-margin-right: 10%;
 padding: 3%;
-background: white;
+width:50%;
+float: right;
+/* background: white;
+border: 2px solid rgb(168, 168, 168);
+border-radius: 5px; */
 }
 
 #red {
