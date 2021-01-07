@@ -17,7 +17,7 @@ class App extends Component {
 
     fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
     .then(response => response.json())
-    .then(response => {
+    .then(response => { console.log("test", API_KEY); console.log("test2", response)
       if (response.Search) {
          this.setState({moviesArray: response.Search})
       } 
