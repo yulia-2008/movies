@@ -15,7 +15,7 @@ class App extends Component {
   changeHandler = event => { 
     this.setState({searchTerm: event.target.value})
 
-    fetch(`http://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
+    fetch(`https://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
     .then(response => response.json())
     .then(response => { console.log("test", API_KEY); console.log("test2", response)
       if (response.Search) {
