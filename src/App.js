@@ -17,7 +17,7 @@ class App extends Component {
 
     fetch(`https://www.omdbapi.com/?s=${event.target.value}&apikey=${API_KEY}`)
     .then(response => response.json())
-    .then(response => { console.log("test", API_KEY); console.log("test2", response)
+    .then(response => { 
       if (response.Search) {
          this.setState({moviesArray: response.Search})
       } 
@@ -102,7 +102,7 @@ class App extends Component {
   }
 
 
-  render() { console.log("state", this.state.nominations)
+  render() { 
     return (
       <div id="main">
         <div id="centered">
